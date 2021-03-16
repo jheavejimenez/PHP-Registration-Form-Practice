@@ -14,7 +14,7 @@ input {
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: #8bf0ba ;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -62,7 +62,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #444;
+  color: #000;
   margin-bottom: 10px;
 }
 
@@ -82,7 +82,7 @@ form.sign-in-form {
 .input-field i {
   text-align: center;
   line-height: 55px;
-  color: #acacac;
+  color: #000;
   transition: 0.5s;
   font-size: 1.1rem;
 }
@@ -98,7 +98,7 @@ form.sign-in-form {
 }
 
 .input-field input::placeholder {
-  color: #aaa;
+  color: rgb(83, 82, 82);
   font-weight: 500;
 }
 
@@ -134,7 +134,7 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: #5995fd;
+  background-color: #368eef;
   border: none;
   outline: none;
   height: 49px;
