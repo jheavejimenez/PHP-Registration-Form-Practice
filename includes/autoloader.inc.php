@@ -6,5 +6,4 @@
         $fullpath = $path . $classname . $extension;
         include_once $fullpath;
     }
-    include_once('templates/index.html');
 ?>
