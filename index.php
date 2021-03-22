@@ -55,6 +55,10 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" />
             </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Confirm Password" />
+            </div>
             <input type="submit" class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
