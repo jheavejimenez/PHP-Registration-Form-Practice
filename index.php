@@ -1,6 +1,5 @@
-<?php
-  include 'includes/autoloader.inc.php'
-?>
+<?php include 'config.php' ?>
+<?php include 'includes/autoloader.inc.php'?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,24 +41,25 @@
             </div>
           </form>
           <form action="" class="sign-up-form">
+          <form method="post">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" name="password" placeholder="Password" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" />
+              <input type="password" name="confirmpassword" placeholder="Confirm Password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" name="signup"class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
