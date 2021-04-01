@@ -1,3 +1,8 @@
+ <?php
+  require_once 'core/init.php';
+  $users = DB::getInstance()->query('SELECT username From users');
+ ?>
+
  <!DOCTYPE html>
 <html lang="en">
   <head>
