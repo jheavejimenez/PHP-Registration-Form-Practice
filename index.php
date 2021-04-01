@@ -1,5 +1,6 @@
-<?php include 'config.php' ?>
-<?php include 'includes/autoloader.inc.php'?>
+<?php 
+  include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +17,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form method="POST" action="signin" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -40,8 +41,7 @@
               </a>
             </div>
           </form>
-          <form action="" class="sign-up-form">
-          <form method="post">
+          <form method="POST" action="signup" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>

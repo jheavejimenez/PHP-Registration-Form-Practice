@@ -3,7 +3,7 @@
 server with default setting (user 'root' with no password) */
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = ""; 
 $dbname = "sign_up";
 
  

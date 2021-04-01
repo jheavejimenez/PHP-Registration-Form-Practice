@@ -8,7 +8,7 @@ $email    = "";
 $errors = array(); 
 
 
-// signup USER
+// signup USER ERROR
 if (isset($_POST['signup'])) {
     // receive all input values from the form
     $username = mysqli_real_escape_string($db, $_POST['username']);
