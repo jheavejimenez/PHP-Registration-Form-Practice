@@ -1,6 +1,12 @@
  <?php
   require_once 'core/init.php';
-  $users = DB::getInstance()->query('SELECT username From users');
+  $user=DB::getInstance()->get('users', array('username', '=' , 'jheave'));
+  if(!$user->count()) {
+    echo 'no user';
+  } else {
+    echo 'yes';
+  }
+  // echo Config::get('mysql/host');
  ?>
 
  <!DOCTYPE html>
@@ -43,15 +49,15 @@
               </a>
             </div>
           </form>
-          <form method= "post" action= "<?php $_PHP_SELF?>" class="sign-up-form">
+          <form method= "post" action= "" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username" />
+              <input type="text" name="username" value="" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Email" />
+              <input type="email" name="email" value="" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
