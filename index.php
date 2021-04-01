@@ -1,6 +1,6 @@
-  <?php include 'config.php' ?>
-  <?php include 'includes/autoloader.inc.php'?>
-  <?php
+  <?php 
+    include 'includes/config.php' ;
+
 session_start();
 // initializing variables
 $username = "";
@@ -110,7 +110,7 @@ $conn->close();
                 Sign up
               </button>
             </div>
-            <img src="img/log.svg" class="image" alt="" />
+            <img src="img/log.svg" class="image"/>
           </div>
           <div class="panel right-panel">
             <div class="content">
@@ -123,7 +123,7 @@ $conn->close();
                 Sign in
               </button>
             </div>
-            <img src="img/register.svg" class="image" alt="" />
+            <img src="img/register.svg" class="image"/>
           </div>
         </div>
       </div>
