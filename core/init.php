@@ -1,13 +1,12 @@
 <?php
     session_start();
-    // always use local database setup when testing the project
-    /*
+    
     $GLOBALS['config'] = array(
         'mysql' => array(
-            'host' => '127.0.0.1, remotemysql.com',
-            'username' => 'root, boNYa9W5zw',
-            'password' => ',tcT3WJXcxX',
-            'db' => 'login, boNYa9W5zw'
+            'host' => '127.0.0.1',
+            'username' => 'root',
+            'password' => '',
+            'db' => 'login'
         ),
         'remember' => array(
             'cookie_name' => 'hash',
@@ -17,7 +16,7 @@
             'session_name' => 'user'
         )
     );
-    */
+    /*
     $GLOBALS['config'] = array(
         'mysql' => array(
             'host' => 'remotemysql.com',
@@ -33,6 +32,7 @@
             'session_name' => 'user'
         )
     );
+    */
     spl_autoload_register(function($class){
         require_once 'classes/' . $class . '.php';
     });

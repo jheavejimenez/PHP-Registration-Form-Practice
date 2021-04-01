@@ -1,13 +1,13 @@
  <?php
   require_once 'core/init.php';
-  $user=DB::getInstance()->get('users', array('username', '=' , 'jheave'));
-  if(!$user->count()) {
-    echo 'no user';
-  } else {
-    echo 'yes';
-  }
-  // echo Config::get('mysql/host');
- ?>
+//   $user=DB::getInstance()->get('users', array('username', '=' , 'jheave'));
+//   if(!$user->count()) {
+//     echo 'no user';
+//   } else {
+//     echo 'yes';
+//   }
+//   // echo Config::get('mysql/host');
+//  ?>
 
  <!DOCTYPE html>
 <html lang="en">
