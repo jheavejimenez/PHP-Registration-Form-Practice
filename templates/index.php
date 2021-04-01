@@ -1,7 +1,9 @@
-<?php
+ <?php
   require_once 'core/init.php';
-?>
-<!DOCTYPE html>
+  $users = DB::getInstance()->query('SELECT username From users');
+ ?>
+
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
