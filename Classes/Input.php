@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 class Input {
         public static function exists($type = 'post'){
             switch($type){
