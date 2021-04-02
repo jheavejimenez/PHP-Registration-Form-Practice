@@ -1,59 +1,37 @@
- <?php
-  require_once 'core/init.php';
-  if (Input::exists()){
-    if(Token::check(Input::get('token'))) {
-
-    $validate = new Validate();
-    $validation = $validate->check($_POST, array(
-      'username' => array(
-        'name' => 'Username',
-        'required' => true,
-        'min' => 2,
-        'max' => 20,
-        'unique' => 'users',
-
-      ),
-      'password' => array(
-        'required' => true,
-        'min' => 6,
-      ),
-      'confirmpassword' => array(
-        'required' => true,
-        'matches' => 'password',
-      ),
-      'name' => array(
-        'required' => true,
-        'min' => 2,
-        'max' => 50
-      ),
-
-    ));
-    if($validation->passed()){
-      // session::flash('success', 'You registered successfully!');
-      // header('Location: profile.php');
-      $user = new User();
-      $salt = Hash::salt(32);
-      try {
-        $user->create(array(
-          'username' => Input::get('username'),
-          'password' => Hash::make(Input::get('password'), $salt),
-          'salt' => $salt,
-          'name' => Input::get('name'),
-          'joined' => date('Y-m-d H:i:s'),
-          'group' => 1
-
-        ));
-      } catch(Exception $e) {
-        die($e->getMessage());
-      }
-    }else {
-      foreach($validation->errors() as $error) {
-        echo $error, '<br>';
-      }
-    }
-    }
+  <?php require_once 'core/init.php'; ?>
+  <?php include 'signup.php'; ?>
+  <?php if(Session::exists('home')) {
+	echo '<p>' . Session::flash('home') .'</p>';
   }
-?>
+  ?>
+  <?php
+    if(Input::exists()){
+	if(Token::check(Input::get('token'))){
+
+		$validate = new Validate();
+		$validation = $validate->check(array(
+			'username' => array('required' => true),
+			'password' => array('required' => true)
+		));
+
+		if($validation->passed) {
+			$user = new User();
+			$login = $user->login(Input::get('username'), Input::get('password'));
+
+			if($login){
+				echo 'success';
+			} else {
+				echo '<p>sorry,logging in failed.</p>';
+            }
+		} else {
+		   foreach($validation->errors() as $error){
+			echo $error, '<br>';
+			}
+		}
+	}
+}
+
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
