@@ -77,9 +77,6 @@
               </a>
             </div>
           </form>
-
-<!-- Signup/Register -->
-
           <form method= "post" action= "" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
@@ -112,9 +109,6 @@
               </a>
             </div>
           </form>
-
-<!--End of Signup/Register -->
-
         </div>
       </div>
       <div class="panels-container">
