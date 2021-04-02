@@ -1,3 +1,3 @@
 <?php
-    header('Location: templates/index.php');
+    header('Location: index.php');
 ?>

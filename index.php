@@ -29,8 +29,23 @@
 
     ));
     if($validation->passed()){
-      session::flash('success', 'You registered successfully!');
-      header('Location: profile.php');
+      // session::flash('success', 'You registered successfully!');
+      // header('Location: profile.php');
+      $user = new User();
+      $salt = Hash::salt(32);
+      try {
+        $user->create(array(
+          'username' => Input::get('username'),
+          'password' => Hash::make(Input::get('password'), $salt),
+          'salt' => $salt,
+          'name' => Input::get('name'),
+          'joined' => date('Y-m-d H:i:s'),
+          'group' => 1
+
+        ));
+      } catch(Exception $e) {
+        die($e->getMessage());
+      }
     }else {
       foreach($validation->errors() as $error) {
         echo $error, '<br>';
@@ -40,7 +55,7 @@
   }
 ?>
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -99,7 +114,7 @@
               <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" />
             </div>
             <input type="submit" name="signup"class="btn" value="Sign up" />
-            <input type ="hidden" name ="token" value="<?php echo token::generate();?>">
+            <input type ="hidden" name ="token" value="<?php echo Token::generate();?>">
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
