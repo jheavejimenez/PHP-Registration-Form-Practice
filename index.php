@@ -1,13 +1,41 @@
  <?php
   require_once 'core/init.php';
-//   $user=DB::getInstance()->get('users', array('username', '=' , 'jheave'));
-//   if(!$user->count()) {
-//     echo 'no user';
-//   } else {
-//     echo $user->first()->username;
-//   }
-//   // echo Config::get('mysql/host');
-//  ?>
+  if (Input::exists()){
+    $validate = new Validate();
+    $validation = $validate->check($_POST, array(
+      'username' => array(
+        'name' => 'Username',
+        'required' => true,
+        'min' => 2,
+        'max' => 20,
+        'unique' => 'users',
+
+      ),
+      'password' => array(
+        'required' => true,
+        'min' => 6,
+      ),
+      'confirmpassword' => array(
+        'required' => true,
+        'matches' => 'password',
+      ),
+      'name' => array(
+        'required' => true,
+        'min' => 2,
+        'max' => 50
+      ),
+      
+    ));
+    if($validation->passed()){
+      echo "passed";
+    }else {
+      foreach($validation->errors() as $error) {
+        echo $error, '<br>';
+      }
+    }
+
+  }
+?>
 
  <!DOCTYPE html>
 <html lang="en">
@@ -49,23 +77,26 @@
               </a>
             </div>
           </form>
+
+<!-- Signup/Register -->
+
           <form method= "post" action= "" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" value="" placeholder="Username" />
+              <input type="text" name="username" id="username" value="<?php echo Input::get('username');?>" placeholder="Username" />
             </div>
             <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" name="email" value="" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Password" />
+              <i class="fas fa-user"></i>
+              <input type="text" name="name" id="name"  value="<?php echo Input::get('password');?>" placeholder="name" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="confirmpassword" placeholder="Confirm Password" />
+              <input type="password" name="password" id="password" placeholder="Password" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" />
             </div>
             <input type="submit" name="signup"class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
@@ -81,6 +112,9 @@
               </a>
             </div>
           </form>
+
+<!--End of Signup/Register -->
+
         </div>
       </div>
       <div class="panels-container">
