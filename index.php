@@ -4,7 +4,7 @@
 //   if(!$user->count()) {
 //     echo 'no user';
 //   } else {
-//     echo 'yes';
+//     echo $user->first()->username;
 //   }
 //   // echo Config::get('mysql/host');
 //  ?>
