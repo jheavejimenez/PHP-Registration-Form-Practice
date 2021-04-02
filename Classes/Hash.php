@@ -7,12 +7,12 @@
 
         public function salt($lenght) {
            return bin2hex(random_bytes($lenght));
-            
+
         }
 
         public function unique() {
            return self::make(uniqid());
-            
+
         }
     }
 ?>
