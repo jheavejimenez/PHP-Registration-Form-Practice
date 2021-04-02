@@ -7,14 +7,13 @@
         public static function check($token)
         {
             $tokenname = Config::get('session/token_name');
- 
-            if(session::exists($tokenname) && $token === session::get($tokenname)) {
+
+            if(session::exists($tokenname)&& $token === session::get($tokenname)) {
                 session::delete($tokenname);
                 return true;
- 
+
             }
             return false;
         }
- 
+
     }
-?>

@@ -1,41 +1,42 @@
  <?php
   require_once 'core/init.php';
   if (Input::exists()){
-    if (Token::check(Input::get('token'))) {
-      $validate = new Validate();
-      $validation = $validate->check($_POST, array(
-        'username' => array(
-          'name' => 'Username',
-          'required' => true,
-          'min' => 2,
-          'max' => 20,
-          'unique' => 'users',
-        
-        ),
-        'password' => array(
-          'required' => true,
-          'min' => 6,
-        ),
-        'confirmpassword' => array(
-          'required' => true,
-          'matches' => 'password',
-        ),
-        'name' => array(
-          'required' => true,
-          'min' => 2,
-          'max' => 50
-        ),
-        
-      ));
-      if($validation->passed()){
-        echo "passed";
-      }else {
-        foreach($validation->errors() as $error) {
-          echo $error, '<br>';
-        }
+    if(Token::check(Input::get('token'))) {
+
+    $validate = new Validate();
+    $validation = $validate->check($_POST, array(
+      'username' => array(
+        'name' => 'Username',
+        'required' => true,
+        'min' => 2,
+        'max' => 20,
+        'unique' => 'users',
+
+      ),
+      'password' => array(
+        'required' => true,
+        'min' => 6,
+      ),
+      'confirmpassword' => array(
+        'required' => true,
+        'matches' => 'password',
+      ),
+      'name' => array(
+        'required' => true,
+        'min' => 2,
+        'max' => 50
+      ),
+
+    ));
+    if($validation->passed()){
+      session::flash('success', 'You registered successfully!');
+      header('Location: profile.php');
+    }else {
+      foreach($validation->errors() as $error) {
+        echo $error, '<br>';
       }
     }
-    
+    }
   }
 ?>
 
@@ -79,9 +80,6 @@
               </a>
             </div>
           </form>
-
-<!-- Signup/Register -->
-
           <form method= "post" action= "" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
@@ -101,6 +99,7 @@
               <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" />
             </div>
             <input type="submit" name="signup"class="btn" value="Sign up" />
+            <input type ="hidden" name ="token" value="<?php echo token::generate();?>">
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -114,9 +113,6 @@
               </a>
             </div>
           </form>
-
-<!--End of Signup/Register -->
-
         </div>
       </div>
       <div class="panels-container">
