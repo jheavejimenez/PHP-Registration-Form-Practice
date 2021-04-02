@@ -1,39 +1,41 @@
  <?php
   require_once 'core/init.php';
   if (Input::exists()){
-    $validate = new Validate();
-    $validation = $validate->check($_POST, array(
-      'username' => array(
-        'name' => 'Username',
-        'required' => true,
-        'min' => 2,
-        'max' => 20,
-        'unique' => 'users',
-
-      ),
-      'password' => array(
-        'required' => true,
-        'min' => 6,
-      ),
-      'confirmpassword' => array(
-        'required' => true,
-        'matches' => 'password',
-      ),
-      'name' => array(
-        'required' => true,
-        'min' => 2,
-        'max' => 50
-      ),
-      
-    ));
-    if($validation->passed()){
-      echo "passed";
-    }else {
-      foreach($validation->errors() as $error) {
-        echo $error, '<br>';
+    if (Token::check(Input::get('token'))) {
+      $validate = new Validate();
+      $validation = $validate->check($_POST, array(
+        'username' => array(
+          'name' => 'Username',
+          'required' => true,
+          'min' => 2,
+          'max' => 20,
+          'unique' => 'users',
+        
+        ),
+        'password' => array(
+          'required' => true,
+          'min' => 6,
+        ),
+        'confirmpassword' => array(
+          'required' => true,
+          'matches' => 'password',
+        ),
+        'name' => array(
+          'required' => true,
+          'min' => 2,
+          'max' => 50
+        ),
+        
+      ));
+      if($validation->passed()){
+        echo "passed";
+      }else {
+        foreach($validation->errors() as $error) {
+          echo $error, '<br>';
+        }
       }
     }
-
+    
   }
 ?>
 
@@ -88,7 +90,7 @@
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="name" id="name"  value="<?php echo Input::get('password');?>" placeholder="name" />
+              <input type="text" name="name" id="name"  value="<?php echo Input::get('name');?>" placeholder="name" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
