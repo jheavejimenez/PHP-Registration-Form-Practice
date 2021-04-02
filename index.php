@@ -88,7 +88,7 @@
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="name" id="name"  value="<?php echo Input::get('password');?>" placeholder="name" />
+              <input type="text" name="name" id="name"  value="<?php echo Input::get('name');?>" placeholder="name" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
